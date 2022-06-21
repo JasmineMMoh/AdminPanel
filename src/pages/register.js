@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import "yup-phone";
 import {
   Box,
   Button,
@@ -22,7 +23,11 @@ const Register = () => {
       email: '',
       firstName: '',
       lastName: '',
-      password: '',
+      companyName: '',
+      phone: '',
+      country: '',
+      city: '',
+      tin: '',
       policy: false
     },
     validationSchema: Yup.object({
@@ -43,17 +48,38 @@ const Register = () => {
         .max(255)
         .required(
           'Last name is required'),
-      password: Yup
+      companyName: Yup
         .string()
         .max(255)
         .required(
-          'Password is required'),
+          'Company Name is required'),
+         phone: Yup
+          .number()
+          .max(15)
+          .required(
+            'Phone number is required'), 
+         country: Yup
+        .string()
+        .max(255)
+        .required(
+          'Country name is required'),
+        tin: Yup
+          .number()
+          .max(15)
+          .required(
+            'Tin number is required'),
+        trading: Yup
+          .number()
+          .max(15)
+          .required(
+            'Trading License number is required'),
       policy: Yup
         .boolean()
         .oneOf(
           [true],
           'This field must be checked'
-        )
+      )
+
     }),
     onSubmit: () => {
       router.push('/');
@@ -64,7 +90,7 @@ const Register = () => {
     <>
       <Head>
         <title>
-          Register | Material Kit
+          Register
         </title>
       </Head>
       <Box
@@ -94,14 +120,14 @@ const Register = () => {
                 color="textPrimary"
                 variant="h4"
               >
-                Create a new account
+                Register a new Exporter
               </Typography>
               <Typography
                 color="textSecondary"
                 gutterBottom
                 variant="body2"
               >
-                Use your email to create a new account
+                Legitimate Exporters Only!
               </Typography>
             </Box>
             <TextField
@@ -129,6 +155,18 @@ const Register = () => {
               variant="outlined"
             />
             <TextField
+              error={Boolean(formik.touched.companyName && formik.errors.companyName)}
+              fullWidth
+              helperText={formik.touched.companyName && formik.errors.companyName}
+              label="Company Name"
+              margin="normal"
+              name="companyName"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.companyName}
+              variant="outlined"
+            />
+            <TextField
               error={Boolean(formik.touched.email && formik.errors.email)}
               fullWidth
               helperText={formik.touched.email && formik.errors.email}
@@ -141,17 +179,70 @@ const Register = () => {
               value={formik.values.email}
               variant="outlined"
             />
+            
             <TextField
-              error={Boolean(formik.touched.password && formik.errors.password)}
+              error={Boolean(formik.touched.phone && formik.errors.phone)}
               fullWidth
-              helperText={formik.touched.password && formik.errors.password}
-              label="Password"
+              helperText={formik.touched.phone && formik.errors.phone}
+              label="Phone"
               margin="normal"
-              name="password"
+              name="phone"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="password"
-              value={formik.values.password}
+              type="phone"
+              value={formik.values.number}
+              variant="outlined"
+            />
+            <TextField
+              error={Boolean(formik.touched.country && formik.errors.country)}
+              fullWidth
+              helperText={formik.touched.country && formik.errors.country}
+              label="Country"
+              margin="normal"
+              name="country"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="country"
+              value={formik.values.country}
+              variant="outlined"
+            />
+            <TextField
+              error={Boolean(formik.touched.city && formik.errors.city)}
+              fullWidth
+              helperText={formik.touched.city && formik.errors.city}
+              label="City"
+              margin="normal"
+              name="City"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="city"
+              value={formik.values.city}
+              variant="outlined"
+            />
+            <TextField
+              error={Boolean(formik.touched.tin && formik.errors.tin)}
+              fullWidth
+              helperText={formik.touched.tin && formik.errors.tin}
+              label="Tin Number"
+              margin="normal"
+              name="tin"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="tin"
+              value={formik.values.tin}
+              variant="outlined"
+            />
+             <TextField
+              error={Boolean(formik.touched.trading && formik.errors.trading)}
+              fullWidth
+              helperText={formik.touched.trading && formik.errors.trading}
+              label="Trading License Number"
+              margin="normal"
+              name="trading"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="trading"
+              value={formik.values.trading}
               variant="outlined"
             />
             <Box
@@ -170,7 +261,7 @@ const Register = () => {
                 color="textSecondary"
                 variant="body2"
               >
-                I have read the
+                Exporter have read the
                 {' '}
                 <NextLink
                   href="#"
@@ -200,27 +291,10 @@ const Register = () => {
                 type="submit"
                 variant="contained"
               >
-                Sign Up Now
+                Register
               </Button>
             </Box>
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              Have an account?
-              {' '}
-              <NextLink
-                href="/login"
-                passHref
-              >
-                <Link
-                  variant="subtitle2"
-                  underline="hover"
-                >
-                  Sign In
-                </Link>
-              </NextLink>
-            </Typography>
+          
           </form>
         </Container>
       </Box>

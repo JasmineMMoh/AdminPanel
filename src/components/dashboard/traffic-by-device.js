@@ -17,7 +17,7 @@ export const TrafficByDevice = (props) => {
         hoverBorderColor: '#FFFFFF'
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['ANDROID DEVICES', 'Tablet', 'IOS DEVICES']
   };
 
   const options = {
@@ -44,9 +44,9 @@ export const TrafficByDevice = (props) => {
 
   const devices = [
     {
-      title: 'Desktop',
+      title: 'ANDROID DEVICES',
       value: 63,
-      icon: LaptopMacIcon,
+      icon: PhoneIcon,
       color: '#3F51B5'
     },
     {
@@ -56,7 +56,7 @@ export const TrafficByDevice = (props) => {
       color: '#E53935'
     },
     {
-      title: 'Mobile',
+      title: 'IOS DEVICES',
       value: 23,
       icon: PhoneIcon,
       color: '#FB8C00'

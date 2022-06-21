@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import MoneyIcon from '@mui/icons-material/Money';
+import PeopleIcon from '@mui/icons-material/PeopleOutlined';
 
 export const Budget = (props) => (
   <Card
@@ -19,24 +20,24 @@ export const Budget = (props) => (
             gutterBottom
             variant="overline"
           >
-            BUDGET
+            Importers
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            $24k
+            350
           </Typography>
         </Grid>
         <Grid item>
           <Avatar
             sx={{
-              backgroundColor: 'error.main',
+              backgroundColor: 'success.main',
               height: 56,
               width: 56
             }}
           >
-            <MoneyIcon />
+            <PeopleIcon />
           </Avatar>
         </Grid>
       </Grid>

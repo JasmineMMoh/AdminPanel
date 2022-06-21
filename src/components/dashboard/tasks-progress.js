@@ -18,13 +18,13 @@ export const TasksProgress = (props) => (
             gutterBottom
             variant="overline"
           >
-            TASKS PROGRESS
+            EXPORTERS FROM ADDIS ABABA
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            75.5%
+            90%
           </Typography>
         </Grid>
         <Grid item>
